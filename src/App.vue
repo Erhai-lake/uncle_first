@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Test from "@/components/Test.vue"
+</script>
+
 <template>
 	<div>
 		<p>Hello World!</p>
@@ -5,10 +9,6 @@
 		<Test/>
 	</div>
 </template>
-
-<script setup lang="ts">
-import Test from "@/components/Test.vue"
-</script>
 
 <style scoped>
 </style>

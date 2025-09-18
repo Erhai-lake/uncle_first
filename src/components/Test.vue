@@ -1,14 +1,3 @@
-<template>
-	<div class="Test">
-		<h2> Name: {{ NAME }} </h2>
-		<h2> Age: {{ AGE }}</h2>
-		<h2> Message: {{ Utils.show.showMessage(TEL) }}</h2>
-		<button @click='Utils.show.showTel("你看你妈呢")'>Let me Look Look😋</button>
-		<button @click='Utils.change.name("黑鬼")'>修改名称</button>
-		<button @click=Utils.change.age(123456)>修改年龄</button>
-	</div>
-</template>
-
 <script setup lang="ts">
 import {ref} from "vue"
 
@@ -35,6 +24,17 @@ let Utils = {
 	}
 }
 </script>
+
+<template>
+	<div class="Test">
+		<h2> Name: {{ NAME }} </h2>
+		<h2> Age: {{ AGE }}</h2>
+		<h2> Message: {{ Utils.show.showMessage(TEL) }}</h2>
+		<button @click='Utils.show.showTel("你看你妈呢")'>Let me Look Look😋</button>
+		<button @click='Utils.change.name("黑鬼")'>修改名称</button>
+		<button @click=Utils.change.age(123456)>修改年龄</button>
+	</div>
+</template>
 
 <style>
 .Test {
