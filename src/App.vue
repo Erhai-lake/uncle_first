@@ -4,8 +4,8 @@ import Test from "@/components/Test.vue"
 
 <template>
 	<div>
-		<p>Hello World!</p>
-		<p>Hello Vue!</p>
+		<p>{{ $t("hello") }}</p>
+		<p>{{ $t("welcome", {name: "BYD"}) }}</p>
 		<Test/>
 	</div>
 </template>
