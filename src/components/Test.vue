@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {ref} from "vue"
 
 const NAME = ref("Nigger")
@@ -7,18 +7,18 @@ const TEL = ref(1919810)
 
 let Utils = {
 	show: {
-		showTel: function (message: string | number) {
+		showTel: function (message) {
 			return alert(message)
 		},
-		showMessage: function (message: string | number) {
+		showMessage: function (message) {
 			return message
 		}
 	},
 	change: {
-		name: function (name: string) {
+		name: function (name) {
 			NAME.value = name
 		},
-		age: function (age: number) {
+		age: function (age) {
 			AGE.value = age
 		}
 	}
