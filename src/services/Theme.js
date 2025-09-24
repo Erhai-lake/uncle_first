@@ -13,7 +13,6 @@ export default {
 	 * @returns {string} 主题名称
 	 */
 	getTheme() {
-		console.log(sessionStorage.getItem("theme"))
 		return sessionStorage.getItem("theme") || "light"
 	}
 }

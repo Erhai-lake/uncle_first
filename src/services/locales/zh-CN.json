@@ -1,4 +1,6 @@
 {
-	"hello": "你好",
-	"welcome": "欢迎你, {name}!"
+	"theme": {
+		"light": "白昼",
+		"dark": "黑夜"
+	}
 }

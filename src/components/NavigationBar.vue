@@ -1,8 +1,15 @@
 <script setup>
-import { ref } from "vue"
+import {ref} from "vue"
+import I18n from "@/services/I18n.js"
 import Theme from "@/services/Theme.js"
 
+const I18N = ref(I18n.getLanguage() || "zh-CN")
 const THEME = ref(Theme.getTheme() || "light")
+
+const switchLanguage = () => {
+	I18N.value = I18N.value === "zh-CN" ? "en-US" : "zh-CN"
+	I18n.applyLanguage(I18N.value)
+}
 
 const switchTheme = () => {
 	THEME.value = THEME.value === "light" ? "dark" : "light"
@@ -17,10 +24,13 @@ const switchTheme = () => {
 			<h1>标题</h1>
 			<div></div>
 			<div class="controls">
-				<div><i class="fa-solid fa-globe"></i> 简体中文</div>
+				<div @click="switchLanguage">
+					<i class="fa-solid fa-globe"></i>
+					<span>{{ I18N === 'zh-CN' ? "简体中文" : "English" }}</span>
+				</div>
 				<div @click="switchTheme">
 					<i :class="{'fas fa-sun light-icon': THEME === 'light', 'fas fa-moon dark-icon': THEME === 'dark'}"></i>
-					<span>{{ THEME === 'light' ? '白昼模式' : '黑夜模式' }}</span>
+					<span>{{ THEME === 'light' ? $t('theme.light') : $t('theme.dark') }}</span>
 				</div>
 			</div>
 		</div>
@@ -40,7 +50,7 @@ const switchTheme = () => {
 
 .logo-container {
 	display: grid;
-	grid-template-columns: 48px auto 1fr auto;
+	grid-template-columns: 48px auto 1fr 100px;
 	align-items: center;
 	gap: 10px;
 
@@ -62,7 +72,7 @@ const switchTheme = () => {
 		div {
 			cursor: pointer;
 
-			span{
+			span {
 				margin-left: 5px;
 			}
 		}
