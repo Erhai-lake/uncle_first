@@ -26,14 +26,15 @@ const switchTheme = () => {
 			<div class="controls">
 				<div @click="switchLanguage">
 					<i class="fa-solid fa-globe"></i>
-					<span>{{ I18N === 'zh-CN' ? "简体中文" : "English" }}</span>
+					<span>{{ I18N === "zh-CN" ? "简体中文" : "English" }}</span>
 				</div>
 				<div @click="switchTheme">
 					<i :class="{'fas fa-sun light-icon': THEME === 'light', 'fas fa-moon dark-icon': THEME === 'dark'}"></i>
-					<span>{{ THEME === 'light' ? $t('theme.light') : $t('theme.dark') }}</span>
+					<span>{{ THEME === "light" ? $t("theme.light") : $t("theme.dark") }}</span>
 				</div>
 			</div>
 		</div>
+		<div class="hr"></div>
 	</div>
 </template>
 
@@ -49,6 +50,7 @@ const switchTheme = () => {
 }
 
 .logo-container {
+	margin-bottom: 10px;
 	display: grid;
 	grid-template-columns: 48px auto 1fr 100px;
 	align-items: center;
@@ -77,5 +79,9 @@ const switchTheme = () => {
 			}
 		}
 	}
+}
+
+.hr{
+	border-bottom: 1px solid var(--border-color);
 }
 </style>
