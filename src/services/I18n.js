@@ -1,7 +1,7 @@
 import {createI18n} from "vue-i18n"
 
-import zhCN from "@/services/locales/zh-CN.json"
-import enUS from "@/services/locales/en-US.json"
+import zhCN from "@/assets/lang/zh-CN.json"
+import enUS from "@/assets/lang/en-US.json"
 
 export const I18n = createI18n({
 	globalInjection: true,
