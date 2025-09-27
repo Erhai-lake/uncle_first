@@ -8,8 +8,14 @@ Theme.applyTheme(Theme.getTheme())
 </script>
 
 <template>
-	<navigation-bar/>
+    <navigation-bar/>
+    <div class="router">
+      <router-view/>
+    </div>
 </template>
 
 <style scoped>
+.router{
+  padding: 0 20px;
+}
 </style>
