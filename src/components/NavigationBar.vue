@@ -35,6 +35,9 @@ const switchTheme = () => {
 			</div>
 		</div>
 		<div class="hr"></div>
+		<div>
+			这里是一/二级菜单, 但是后端优先级比这个高, 下个更新就写菜单, 主要是要写登录的地址
+		</div>
 	</div>
 </template>
 
@@ -42,7 +45,6 @@ const switchTheme = () => {
 .navigation-bar {
 	padding: 10px 20px;
 	box-sizing: border-box;
-	height: 68px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -51,6 +53,7 @@ const switchTheme = () => {
 
 .logo-container {
 	margin-bottom: 10px;
+	height: 68px;
 	display: grid;
 	grid-template-columns: 48px auto 1fr 100px;
 	align-items: center;
