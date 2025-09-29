@@ -26,6 +26,11 @@ const MENUS = ref([
 		target: "_self"
 	},
 	{
+		name: "管理",
+		path: "/admin",
+		target: "_self"
+	},
+	{
 		name: "一级",
 		path: "/",
 		children: [
@@ -91,7 +96,7 @@ const MENUS = ref([
 
 <style lang="less" scoped>
 .navigation-bar {
-	padding: 10px 20px;
+	padding: 10px 50px;
 	box-sizing: border-box;
 	-webkit-user-select: none;
 	-moz-user-select: none;

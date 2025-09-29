@@ -9,22 +9,22 @@ const routes = [
 			requiresAuth: false
 		}
 	},
-	// {
-	// 	path: "/login",
-	// 	name: "login",
-	// 	component: () => import("@/views/login.vue"),
-	// 	meta: {
-	// 		requiresAuth: false
-	// 	}
-	// },
-	// {
-	// 	path: "/admin",
-	// 	name: "admin",
+	{
+		path: "/login",
+		name: "login",
+		component: () => import("@/views/login.vue"),
+		meta: {
+			requiresAuth: false
+		}
+	},
+	{
+		path: "/admin",
+		name: "admin",
 	// 	component: () => import("@/views/admin.vue"),
-	// 	meta: {
-	// 		requiresAuth: true
-	// 	}
-	// }
+		meta: {
+			requiresAuth: true
+		}
+	}
 ]
 
 // 路由实例

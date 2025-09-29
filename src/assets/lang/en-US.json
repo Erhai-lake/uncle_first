@@ -2,5 +2,12 @@
 	"theme": {
 		"light": "Daylight",
 		"dark": "Night"
+	},
+	"login": {
+		"username": "Username",
+		"username-placeholder": "Please enter your username",
+		"password": "Password",
+		"password-placeholder": "Please enter your password",
+		"login": "Login"
 	}
 }

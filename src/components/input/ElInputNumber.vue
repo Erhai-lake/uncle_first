@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: "InputNumber",
+	name: "ElInputNumber",
 	props: {
 		// "input" 或 "slider"
 		mode: {

@@ -2,5 +2,12 @@
 	"theme": {
 		"light": "白昼",
 		"dark": "黑夜"
+	},
+	"login": {
+		"username": "用户名",
+		"username-placeholder": "请输入用户名",
+		"password": "密码",
+		"password-placeholder": "请输入密码",
+		"login": "登录"
 	}
 }

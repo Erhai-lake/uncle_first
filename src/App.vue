@@ -16,6 +16,6 @@ Theme.applyTheme(Theme.getTheme())
 
 <style scoped>
 .router{
-  padding: 0 20px;
+  padding: 0 50px;
 }
 </style>
