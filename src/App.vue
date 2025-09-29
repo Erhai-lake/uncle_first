@@ -8,14 +8,28 @@ Theme.applyTheme(Theme.getTheme())
 </script>
 
 <template>
-    <navigation-bar/>
-    <div class="router">
-      <router-view/>
-    </div>
+	<div class="app">
+		<navigation-bar/>
+		<div class="router">
+			<router-view/>
+		</div>
+	</div>
 </template>
 
-<style scoped>
-.router{
-  padding: 0 50px;
+<style scoped lang="less">
+.app {
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	overflow: auto;
+}
+
+.router {
+	padding: 0 50px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
 }
 </style>

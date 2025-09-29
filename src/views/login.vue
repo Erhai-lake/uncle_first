@@ -12,28 +12,36 @@ const password = ref("")
  */
 const login = () => {
 	console.log("尝试登录:", username.value, password.value)
-	alert("暂时没有功能哦 ~")
 }
 </script>
 
 <template>
-	<div class="login-container">
-		<div class="form-item">
-			<label>{{ $t("login.username") }}</label>
-			<el-input-text v-model="username" :placeholder="$t('login.username-placeholder')"/>
+	<div class="login">
+		<div class="login-container">
+			<div class="form-item">
+				<label>{{ $t("login.username") }}</label>
+				<el-input-text v-model="username" :placeholder="$t('login.username-placeholder')"/>
+			</div>
+			<div class="form-item">
+				<label>{{ $t("login.password") }}</label>
+				<el-input-text v-model="password" :placeholder="$t('login.password-placeholder')"/>
+			</div>
+			<el-button @click="login">{{ $t("login.login") }}</el-button>
 		</div>
-		<div class="form-item">
-			<label>{{ $t("login.password") }}</label>
-			<el-input-text v-model="password" :placeholder="$t('login.password-placeholder')"/>
-		</div>
-		<el-button @click="login">{{ $t("login.login") }}</el-button>
 	</div>
 </template>
 
 <style lang="less" scoped>
+.login {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .login-container {
 	padding: 20px;
-	margin: 100px auto;
 	width: 300px;
 	border: 1px solid var(--border-color);
 	border-radius: 8px;
