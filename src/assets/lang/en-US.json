@@ -8,6 +8,7 @@
 		"username-placeholder": "Please enter your username",
 		"password": "Password",
 		"password-placeholder": "Please enter your password",
-		"login": "Login"
+		"login": "Login",
+		"cancel": "Cancel"
 	}
 }

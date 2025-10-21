@@ -8,6 +8,7 @@
 		"username-placeholder": "请输入用户名",
 		"password": "密码",
 		"password-placeholder": "请输入密码",
-		"login": "登录"
+		"login": "登录",
+		"cancel": "取消"
 	}
 }

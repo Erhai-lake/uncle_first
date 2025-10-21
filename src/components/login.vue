@@ -3,6 +3,7 @@ import {ref} from "vue"
 import {useI18n} from "vue-i18n"
 import ElInputText from "@/components/input/ElInputText.vue"
 import ElButton from "@/components/input/ElButton.vue"
+import EventBus from "@/services/EventBus.js"
 
 const {t} = useI18n()
 
@@ -28,7 +29,8 @@ const login = () => {
 			<label>{{ t("login.password") }}</label>
 			<el-input-text v-model="password" :placeholder="t('login.password-placeholder')"/>
 		</div>
-		<el-button @click="login">{{ t("login.login") }}</el-button>
+		<el-button @click="login" class="button-login">{{ t("login.login") }}</el-button>
+		<el-button @click="EventBus.emit('isLogin', false)">{{ t("login.cancel") }}</el-button>
 	</div>
 </template>
 
@@ -59,7 +61,20 @@ const login = () => {
 	}
 
 	button {
+		margin-top: 10px;
 		width: 100%;
+
+		&.button-login {
+			background-color: var(--primary-color);
+
+			&:hover {
+				opacity: 0.8;
+			}
+
+			&:active {
+				opacity: 0.5;
+			}
+		}
 	}
 }
 </style>
