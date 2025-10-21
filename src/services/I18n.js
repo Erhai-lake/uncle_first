@@ -4,6 +4,7 @@ import zhCN from "@/assets/lang/zh-CN.json"
 import enUS from "@/assets/lang/en-US.json"
 
 export const I18n = createI18n({
+	legacy: false,
 	globalInjection: true,
 	locale: "zh-CN",
 	fallbackLocale: "zh-CN",
@@ -12,21 +13,3 @@ export const I18n = createI18n({
 		"en-US": enUS
 	}
 })
-
-export default {
-	/**
-	 * 应用语言
-	 * @param lang 语言名称
-	 */
-	applyLanguage(lang = "zh-CN") {
-		I18n.global.locale = lang
-		sessionStorage.setItem("language", lang)
-	},
-	/**
-	 * 获取当前语言
-	 * @returns {string} 语言名称
-	 */
-	getLanguage() {
-		return sessionStorage.getItem("language") || "zh-CN"
-	}
-}

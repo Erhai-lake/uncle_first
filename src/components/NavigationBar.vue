@@ -1,33 +1,33 @@
 <script setup>
 import {ref} from "vue"
-import I18n from "@/services/I18n.js"
+import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
+import EventBus from "@/services/EventBus.js"
 
-const I18N = ref(I18n.getLanguage() || "zh-CN")
+// 语言
+const {locale, t} = useI18n()
 const switchLanguage = () => {
-	I18N.value = I18N.value === "zh-CN" ? "en-US" : "zh-CN"
-	I18n.applyLanguage(I18N.value)
+	const CURRENT_LOCALE = JSON.parse(JSON.stringify(locale.value))
+	const NEW_LOCALE = CURRENT_LOCALE === "zh-CN" ? "en-US" : "zh-CN"
+	locale.value = JSON.parse(JSON.stringify(NEW_LOCALE))
+	sessionStorage.setItem("language", NEW_LOCALE)
 }
 
+// 主题
 const THEME = ref(Theme.getTheme() || "light")
 const switchTheme = () => {
 	THEME.value = THEME.value === "light" ? "dark" : "light"
 	Theme.applyTheme(THEME.value)
 }
 
+// 导航栏
 const IS_EXTERNAL = (path) => {
 		return /^https?:\/\//.test(path)
 }
-
 const MENUS = ref([
 	{
 		name: "首页",
 		path: "/",
-		target: "_self"
-	},
-	{
-		name: "管理",
-		path: "/admin",
 		target: "_self"
 	},
 	{
@@ -47,6 +47,11 @@ const MENUS = ref([
 		]
 	}
 ])
+
+// 登录
+const login = () => {
+	EventBus.emit("isLogin", true)
+}
 </script>
 
 <template>
@@ -58,11 +63,11 @@ const MENUS = ref([
 			<div class="controls">
 				<div @click="switchLanguage">
 					<i class="fa-solid fa-globe"></i>
-					<span>{{ I18N === "zh-CN" ? "简体中文" : "English" }}</span>
+					<span>{{ locale === "zh-CN" ? "简体中文" : "English" }}</span>
 				</div>
 				<div @click="switchTheme">
 					<i :class="{'fas fa-sun light-icon': THEME === 'light', 'fas fa-moon dark-icon': THEME === 'dark'}"></i>
-					<span>{{ THEME === "light" ? $t("theme.light") : $t("theme.dark") }}</span>
+					<span>{{ THEME === "light" ? t("theme.light") : t("theme.dark") }}</span>
 				</div>
 			</div>
 		</div>
@@ -89,6 +94,9 @@ const MENUS = ref([
 						</component>
 					</li>
 				</ul>
+			</li>
+			<li>
+				<a @click="login">登录</a>
 			</li>
 		</ul>
 	</div>

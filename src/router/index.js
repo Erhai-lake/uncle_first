@@ -10,14 +10,6 @@ const routes = [
 		}
 	},
 	{
-		path: "/login",
-		name: "login",
-		component: () => import("@/views/login.vue"),
-		meta: {
-			requiresAuth: false
-		}
-	},
-	{
 		path: "/admin",
 		name: "admin",
 	// 	component: () => import("@/views/admin.vue"),
