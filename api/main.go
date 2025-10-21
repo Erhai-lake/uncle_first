@@ -21,6 +21,7 @@ func main() {
 	//handler := router.SetupRouter(db)
 	handler := router.SetupRouter()
 	Port := "8080"
+	log.Printf("API文档在 https://tmlo5zfmuq.apifox.cn/, 访问密码: S2jb4tnO")
 	log.Printf("🚀 服务器启动在 http://localhost:%s", Port)
 	log.Printf("💾 内存限制: %dMB", MemoryLimit/(1024*1024))
 	log.Printf("⚡ CPU核心: %d", CPUCore)
