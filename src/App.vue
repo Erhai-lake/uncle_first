@@ -30,7 +30,7 @@ onUnmounted(() => {
 			<router-view/>
 		</div>
 	</div>
-	<div class="login-container" v-if="isLogin">
+	<div class="login-container" v-if="isLogin" @click="isLogin = false">
 		<login/>
 	</div>
 </template>

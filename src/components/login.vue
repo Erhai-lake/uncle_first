@@ -20,7 +20,7 @@ const login = () => {
 </script>
 
 <template>
-	<div class="login">
+	<div class="login" @click.stop>
 		<div class="form-item">
 			<label>{{ t("login.username") }}</label>
 			<el-input-text v-model="username" :placeholder="t('login.username-placeholder')"/>
