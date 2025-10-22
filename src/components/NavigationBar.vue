@@ -137,6 +137,12 @@ const login = () => {
 	.controls {
 		div {
 			cursor: pointer;
+			display: flex;
+			align-items: center;
+
+			i {
+				width: 16px;
+			}
 
 			span {
 				margin-left: 5px;
