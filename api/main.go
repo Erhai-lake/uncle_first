@@ -2,6 +2,8 @@ package main
 
 import (
 	"api/router"
+	"api/storage"
+	"database/sql"
 	"log"
 	"net/http"
 	"runtime"
@@ -16,10 +18,16 @@ func main() {
 	MemoryLimit := int64(500 * 1024 * 1024)
 	debug.SetMemoryLimit(MemoryLimit)
 	// 初始化数据库
-	//db := storage.InitDB()
+	config := storage.DefaultConfig()
+	db := storage.InitDB(config)
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Fatal("❌ 数据库关闭失败: ", err)
+		}
+	}(db)
 	// 获取路由处理器
-	//handler := router.SetupRouter(db)
-	handler := router.SetupRouter()
+	handler := router.SetupRouter(db)
 	Port := "8080"
 	log.Printf("API文档在 https://tmlo5zfmuq.apifox.cn/, 访问密码: S2jb4tnO")
 	log.Printf("🚀 服务器启动在 http://localhost:%s", Port)
