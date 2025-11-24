@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue"
+import {onMounted, onUnmounted, ref} from "vue"
 import {useI18n} from "vue-i18n"
 import ElInputText from "@/components/input/ElInputText.vue"
 import ElButton from "@/components/input/ElButton.vue"
@@ -7,35 +7,86 @@ import EventBus from "@/services/EventBus.js"
 
 const {t} = useI18n()
 
-// 表单数据
+// 登录状态
+const isLogin = ref(false)
+// 用户名
 const username = ref("")
+// 密码
 const password = ref("")
 
-/**
- * 登录
- */
+// 登录
 const login = () => {
 	console.log("尝试登录:", username.value, password.value)
 }
+
+// 取消
+const cancel = () => {
+	EventBus.emit("isLogin", false)
+}
+
+// 登录状态事件处理函数
+const handleLoginEvent = (value) => {
+	isLogin.value = value
+}
+
+onMounted(() => {
+	EventBus.on("isLogin", handleLoginEvent)
+})
+
+onUnmounted(() => {
+	EventBus.off("isLogin", handleLoginEvent)
+})
 </script>
 
 <template>
-	<div class="login" @click.stop>
-		<div class="form-item">
-			<label>{{ t("login.username") }}</label>
-			<el-input-text v-model="username" :placeholder="t('login.username-placeholder')"/>
+	<transition name="login-fade">
+		<div class="login" v-if="isLogin" @click="isLogin = false">
+			<div class="login-container" @click.stop>
+				<div class="form-item">
+					<label>{{ t("login.username") }}</label>
+					<el-input-text v-model="username" :placeholder="t('login.username-placeholder')"/>
+				</div>
+				<div class="form-item">
+					<label>{{ t("login.password") }}</label>
+					<el-input-text v-model="password" :placeholder="t('login.password-placeholder')"/>
+				</div>
+				<el-button @click="login" class="button-login">{{ t("login.login") }}</el-button>
+				<el-button @click="cancel">{{ t("login.cancel") }}</el-button>
+			</div>
 		</div>
-		<div class="form-item">
-			<label>{{ t("login.password") }}</label>
-			<el-input-text v-model="password" :placeholder="t('login.password-placeholder')"/>
-		</div>
-		<el-button @click="login" class="button-login">{{ t("login.login") }}</el-button>
-		<el-button @click="EventBus.emit('isLogin', false)">{{ t("login.cancel") }}</el-button>
-	</div>
+	</transition>
 </template>
 
 <style lang="less" scoped>
+// 添加过渡效果
+.login-fade-enter-active,
+.login-fade-leave-active {
+	transition: opacity 0.3s ease;
+}
+
+.login-fade-enter-from,
+.login-fade-leave-to {
+	opacity: 0;
+}
+
+.login-fade-enter-to,
+.login-fade-leave-from {
+	opacity: 1;
+}
+
 .login {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--box-shadow-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-container {
 	padding: 20px;
 	width: 300px;
 	border: 1px solid var(--border-color);

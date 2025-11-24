@@ -20,11 +20,13 @@ const switchTheme = () => {
 	Theme.applyTheme(THEME.value)
 }
 
-// 导航栏
+// 外部链接判断
 const IS_EXTERNAL = (path) => {
 		return /^https?:\/\//.test(path)
 }
-const MENUS = ref([
+
+// 导航栏
+const MENUS = [
 	{
 		name: "首页",
 		path: "/",
@@ -46,7 +48,7 @@ const MENUS = ref([
 			{name: "Bilibili", path: "https://bilibili.com", target: "_blank"}
 		]
 	}
-])
+]
 
 // 登录
 const login = () => {
