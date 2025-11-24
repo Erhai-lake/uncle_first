@@ -4,6 +4,7 @@ import {useI18n} from "vue-i18n"
 import ElInputText from "@/components/input/ElInputText.vue"
 import ElButton from "@/components/input/ElButton.vue"
 import EventBus from "@/services/EventBus.js"
+import router from "@/router/index.js"
 
 const {t} = useI18n()
 
@@ -17,6 +18,9 @@ const password = ref("")
 // 登录
 const login = () => {
 	console.log("尝试登录:", username.value, password.value)
+	// 登录成功
+	EventBus.emit("isLogin", false)
+	router.push({name: "adminHome"})
 }
 
 // 取消

@@ -1,18 +1,20 @@
 import {createRouter, createWebHashHistory} from "vue-router"
+import Database from "@/services/Database.js"
+import EventBus from "@/services/EventBus.js"
 
 const routes = [
 	{
 		path: "/",
 		name: "home",
-		component: () => import("@/views/home.vue"),
+		component: () => import("@/views/Home.vue"),
 		meta: {
 			requiresAuth: false
 		}
 	},
 	{
 		path: "/admin",
-		name: "admin",
-	// 	component: () => import("@/views/admin.vue"),
+		name: "adminHome",
+		component: () => import("@/views/admin/Home.vue"),
 		meta: {
 			requiresAuth: true
 		}
@@ -25,14 +27,15 @@ const router = createRouter({
 	routes
 })
 
+// 路由守卫
 router.beforeEach((to, from, next) => {
-	const IS_LOGGED_IN = !!localStorage.getItem("token")
+	const IS_LOGGED_IN = !!Database.get("token")
 	if (to.meta.requiresAuth && !IS_LOGGED_IN) {
-		// 没有登录 → 跳去登录页
-		next({name: "login"})
-	} else if (to.name === "login" && IS_LOGGED_IN) {
-		// 已登录还想去登录页 → 重定向到后台
-		next({name: "admin"})
+		// 未登录
+		EventBus.emit("isLogin", true)
+	} else if (IS_LOGGED_IN) {
+		// 已登录
+		next({name: "adminHome"})
 	} else {
 		// 其他情况放行
 		next()
