@@ -9,6 +9,10 @@ export default {
 		placeholder: {
 			type: String,
 			default: ""
+		},
+		password: {
+			type: Boolean,
+			default: false
 		}
 	},
 	emits: ["update:modelValue", "input"],
@@ -25,7 +29,7 @@ export default {
 </script>
 
 <template>
-	<input type="text" :value="modelValue" :placeholder="placeholder" @input="onInput"/>
+	<input :type="password ? 'password' : 'text'" :value="modelValue" :placeholder="placeholder" @input="onInput"/>
 </template>
 
 <style scoped lang="less">

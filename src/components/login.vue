@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, onUnmounted, ref} from "vue"
 import {useI18n} from "vue-i18n"
+import CryptoJS from "crypto-js"
 import ElInputText from "@/components/input/ElInputText.vue"
 import ElButton from "@/components/input/ElButton.vue"
 import EventBus from "@/services/EventBus.js"
@@ -15,17 +16,25 @@ const username = ref("")
 // 密码
 const password = ref("")
 
+// 初始化
+const init = () => {
+	username.value = ""
+	password.value = ""
+}
+
 // 登录
 const login = () => {
-	console.log("尝试登录:", username.value, password.value)
-	// 登录成功
+	const ENCRYPTED_PASSWORD = CryptoJS.SHA256(password.value).toString(CryptoJS.enc.Hex)
+	console.log("尝试登录:", username.value, password.value, ENCRYPTED_PASSWORD)
 	EventBus.emit("isLogin", false)
 	router.push({name: "adminHome"})
+	init()
 }
 
 // 取消
 const cancel = () => {
 	EventBus.emit("isLogin", false)
+	init()
 }
 
 // 登录状态事件处理函数
@@ -34,10 +43,12 @@ const handleLoginEvent = (value) => {
 }
 
 onMounted(() => {
+	init()
 	EventBus.on("isLogin", handleLoginEvent)
 })
 
 onUnmounted(() => {
+	init()
 	EventBus.off("isLogin", handleLoginEvent)
 })
 </script>
@@ -52,7 +63,7 @@ onUnmounted(() => {
 				</div>
 				<div class="form-item">
 					<label>{{ t("login.password") }}</label>
-					<el-input-text v-model="password" :placeholder="t('login.password-placeholder')"/>
+					<el-input-text v-model="password" :placeholder="t('login.password-placeholder')" :password="true"/>
 				</div>
 				<el-button @click="login" class="button-login">{{ t("login.login") }}</el-button>
 				<el-button @click="cancel">{{ t("login.cancel") }}</el-button>
