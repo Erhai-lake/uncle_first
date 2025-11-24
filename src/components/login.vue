@@ -22,10 +22,29 @@ const init = () => {
 	password.value = ""
 }
 
+// 获取盐
+const getSalt = () => {
+	// 需要从后端获取, 登录成功后刷新盐
+	return CryptoJS.lib.WordArray.random(16).toString()
+}
+
+// 加盐哈希
+const hashPassword = (password, salt) => {
+	return CryptoJS.PBKDF2(password, salt, {
+		keySize: 256 / 32,
+		iterations: 10000
+	}).toString(CryptoJS.enc.Hex)
+}
+
 // 登录
 const login = () => {
-	const ENCRYPTED_PASSWORD = CryptoJS.SHA256(password.value).toString(CryptoJS.enc.Hex)
-	console.log("尝试登录:", username.value, password.value, ENCRYPTED_PASSWORD)
+	if (username.value === "" || password.value === "") return
+	const SALT = getSalt()
+	const ENCRYPTED_PASSWORD = hashPassword(password.value, SALT)
+	console.log("尝试登录")
+	console.log("用户名", username.value, "密码", password.value)
+	console.log("加密后的密码", ENCRYPTED_PASSWORD)
+
 	EventBus.emit("isLogin", false)
 	router.push({name: "adminHome"})
 	init()
@@ -56,18 +75,25 @@ onUnmounted(() => {
 <template>
 	<transition name="login-fade">
 		<div class="login" v-if="isLogin" @click="isLogin = false">
-			<div class="login-container" @click.stop>
+			<form class="login-container" @click.stop>
 				<div class="form-item">
 					<label>{{ t("login.username") }}</label>
-					<el-input-text v-model="username" :placeholder="t('login.username-placeholder')"/>
+					<el-input-text
+						v-model="username"
+						:placeholder="t('login.username-placeholder')"
+						autocomplete="username"/>
 				</div>
 				<div class="form-item">
 					<label>{{ t("login.password") }}</label>
-					<el-input-text v-model="password" :placeholder="t('login.password-placeholder')" :password="true"/>
+					<el-input-text
+						v-model="password"
+						:placeholder="t('login.password-placeholder')"
+						:password="true"
+						autocomplete="current-password"/>
 				</div>
 				<el-button @click="login" class="button-login">{{ t("login.login") }}</el-button>
 				<el-button @click="cancel">{{ t("login.cancel") }}</el-button>
-			</div>
+			</form>
 		</div>
 	</transition>
 </template>
