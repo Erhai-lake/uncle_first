@@ -3,6 +3,7 @@ import {ref} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import EventBus from "@/services/EventBus.js"
+import database from "@/services/Database.js"
 
 // 语言
 const {locale, t} = useI18n()
@@ -10,7 +11,7 @@ const switchLanguage = () => {
 	const CURRENT_LOCALE = JSON.parse(JSON.stringify(locale.value))
 	const NEW_LOCALE = CURRENT_LOCALE === "zh-CN" ? "en-US" : "zh-CN"
 	locale.value = JSON.parse(JSON.stringify(NEW_LOCALE))
-	sessionStorage.setItem("language", NEW_LOCALE)
+	database.add("language", NEW_LOCALE)
 }
 
 // 主题

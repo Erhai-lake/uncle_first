@@ -4,11 +4,12 @@ import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import NavigationBar from "@/components/NavigationBar.vue"
 import Login from "@/components/login.vue"
+import database from "@/services/Database.js"
 
 onMounted(() => {
 	// 语言
 	const {locale} = useI18n()
-	locale.value = JSON.parse(JSON.stringify(sessionStorage.getItem("language") || "zh-CN"))
+	locale.value = database.get("language", "zh-CN")
 	// 主题
 	Theme.applyTheme(Theme.getTheme())
 })

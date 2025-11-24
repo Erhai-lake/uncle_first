@@ -67,4 +67,5 @@ eventBus.emit = function (event, ...args) {
 eventBus.getAllEvents = function() {
 	return Array.from(EVENT_MAP.keys())
 }
+
 export default eventBus

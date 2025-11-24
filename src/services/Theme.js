@@ -1,3 +1,5 @@
+import database from "@/services/Database.js"
+
 export default {
 	/**
 	 * 应用主题
@@ -5,7 +7,7 @@ export default {
 	 */
 	applyTheme(theme = "light") {
 		document.documentElement.setAttribute("data-theme", theme)
-		sessionStorage.setItem("theme", theme)
+		database.add("theme", theme)
 		this.getTheme()
 	},
 	/**
@@ -13,6 +15,6 @@ export default {
 	 * @returns {string} 主题名称
 	 */
 	getTheme() {
-		return sessionStorage.getItem("theme") || "light"
+		return database.get("theme", "light")
 	}
 }
