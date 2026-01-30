@@ -61,7 +61,6 @@ const onSlideChange = (swiper) => {
 				:slides-per-view="1"
 				:space-between="0"
 				:loop="true"
-				:autoplay="{delay: 3000, disableOnInteraction: false}"
 				:pagination="{clickable: true, dynamicBullets: true, dynamicMainBullets: 3}"
 				:navigation="{nextEl: '.custom-next', prevEl: '.custom-prev'}"
 				@swiper="onSwiper"
@@ -92,7 +91,7 @@ const onSlideChange = (swiper) => {
 <style scoped lang="less">
 .swiper-container {
 	position: relative;
-	height: 600px;
+	height: 60rem;
 	background-color: var(--box-shadow-color);
 	box-shadow: 0 4px 20px var(--box-shadow-color);
 	display: flex;
@@ -106,8 +105,9 @@ const onSlideChange = (swiper) => {
 }
 
 .left-content {
-	padding: 40px 30px;
-	width: 300px;
+	padding: 4rem 3rem;
+	box-sizing: border-box;
+	width: 30rem;
 	color: var(--text-color);
 	background-image: var(--swiper-container-text-background-color);
 	display: flex;
@@ -120,15 +120,15 @@ const onSlideChange = (swiper) => {
 		word-break: break-word;
 
 		h2 {
-			margin: 0 0 20px 0;
-			font-size: 28px;
+			margin: 0 0 2rem 0;
+			font-size: 2.8rem;
 			font-weight: 600;
 			line-height: 1.3;
 		}
 
 		p {
-			margin: 0 0 15px 0;
-			font-size: 16px;
+			margin: 0 0 1.5rem 0;
+			font-size: 1.6rem;
 			line-height: 1.6;
 			opacity: 0.9;
 
@@ -140,6 +140,7 @@ const onSlideChange = (swiper) => {
 }
 
 .swiper-stage {
+	position: relative;
 	flex: 1 1 auto;
 	min-width: 0;
 
@@ -170,14 +171,14 @@ const onSlideChange = (swiper) => {
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
-		z-index: 10;
+		z-index: 1;
 
 		button {
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			width: 48px;
-			height: 48px;
+			width: 4.8rem;
+			height: 4.8rem;
 			background-color: var(--background-color-reverse);
 			border: none;
 			border-radius: 50%;
@@ -205,11 +206,11 @@ const onSlideChange = (swiper) => {
 			}
 
 			&.custom-prev {
-				left: 20px;
+				left: 2rem;
 			}
 
 			&.custom-next {
-				right: 20px;
+				right: 2rem;
 			}
 
 			&.visible {
@@ -217,72 +218,72 @@ const onSlideChange = (swiper) => {
 			}
 
 			.arrow-icon {
-				width: 24px;
-				height: 24px;
+				width: 2.4rem;
+				height: 2.4rem;
 				fill: var(--text-color-reverse);
 			}
 		}
 	}
 
 	:deep(.swiper-pagination) {
-		bottom: 20px !important;
+		bottom: 2rem !important;
 
 		.swiper-pagination-bullet {
-			margin: 0 4px;
-			width: 8px;
-			height: 8px;
+			margin: 0 0.4rem;
+			width: 0.8rem;
+			height: 0.8rem;
 			background: var(--background-color-reverse);
 			opacity: 1;
 			transition: all 0.3s ease;
 
 			&.swiper-pagination-bullet-active {
-				width: 24px;
+				width: 2.4rem;
 				background: var(--primary-color);
-				border-radius: 4px;
+				border-radius: 0.4rem;
 			}
 		}
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 76.8rem) {
 	.swiper-container {
 		height: auto;
 		flex-direction: column;
 	}
 
 	.left-content {
-		padding: 30px 20px;
+		padding: 3rem 2rem;
 		width: 100%;
 
 		.content-wrapper {
 			h2 {
-				font-size: 24px;
+				font-size: 2.4rem;
 			}
 
 			p {
-				font-size: 14px;
+				font-size: 1.6rem;
 			}
 		}
 	}
 
 	.swiper-stage {
-		height: 300px;
+		height: 30rem;
 
 		.custom-navigation button {
-			width: 40px;
-			height: 40px;
+			width: 4.8rem;
+			height: 4.8rem;
 
 			&.custom-prev {
-				left: 10px;
+				left: 2rem;
 			}
 
 			&.custom-next {
-				right: 10px;
+				right: 2rem;
 			}
 
 			.arrow-icon {
-				width: 20px;
-				height: 20px;
+				width: 2.4rem;
+				height: 2.4rem;
 			}
 		}
 	}

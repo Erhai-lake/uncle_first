@@ -20,7 +20,7 @@
 	// 阴影颜色
 	--box-shadow-color: rgba(0, 0, 0, 0.2);
 	// Swiper容器文字背景颜色
-	--swiper-container-text-background-color: linear-gradient(135deg, #17ead9, var(--primary-color));
+	--swiper-container-text-background-color: linear-gradient(135deg, var(--primary-color), #17ead9);
 }
 
 [data-theme="dark"] {
@@ -57,6 +57,10 @@ a {
 	color: var(--text-color);
 	transition: color 0.3s ease;
 	text-decoration: none;
+}
+
+html {
+	font-size: 62.5%;
 }
 
 body {

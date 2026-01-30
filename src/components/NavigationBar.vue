@@ -46,7 +46,7 @@ const switchTheme = () => {
  * 外部链接判断
  */
 const IS_EXTERNAL = (path) => {
-		return /^https?:\/\//.test(path)
+	return /^https?:\/\//.test(path)
 }
 </script>
 
@@ -74,7 +74,7 @@ const IS_EXTERNAL = (path) => {
 					:is="IS_EXTERNAL(item.path) ? 'a' : 'router-link'"
 					:href="IS_EXTERNAL(item.path) ? item.path : null"
 					:to="!IS_EXTERNAL(item.path) ? item.path : null"
-					v-bind="IS_EXTERNAL(item.path) ? { target: '_' + item.target || 'self', rel: 'noopener noreferrer' } : {}">
+					v-bind="IS_EXTERNAL(item.path) ? { target: '_' + (item.target || 'self'), rel: 'noopener noreferrer' } : {}">
 					{{ t(item.name) }}
 					<i v-if="IS_EXTERNAL(item.path)" class="fas fa-up-right-from-square external-icon"></i>
 				</component>
@@ -84,7 +84,7 @@ const IS_EXTERNAL = (path) => {
 							:is="IS_EXTERNAL(child.path) ? 'a' : 'router-link'"
 							:href="IS_EXTERNAL(child.path) ? child.path : null"
 							:to="!IS_EXTERNAL(child.path) ? child.path : null"
-							v-bind="IS_EXTERNAL(child.path) ? { target: child.target || '_self', rel: 'noopener noreferrer' } : {}">
+							v-bind="IS_EXTERNAL(child.path) ? { target: '_' + (child.target || 'self'), rel: 'noopener noreferrer' } : {}">
 							{{ t(child.name) }}
 							<i v-if="IS_EXTERNAL(child.path)" class="fas fa-up-right-from-square external-icon"></i>
 						</component>
@@ -97,47 +97,50 @@ const IS_EXTERNAL = (path) => {
 
 <style lang="less" scoped>
 .navigation-bar {
-	padding: 10px 50px;
+	padding: 1rem 5rem;
 	box-sizing: border-box;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	z-index: 2;
 }
 
 .logo-container {
-	margin-bottom: 10px;
-	height: 68px;
+	margin-bottom: 1rem;
+	height: 6.8rem;
 	display: grid;
-	grid-template-columns: 48px auto 1fr 100px;
+	grid-template-columns: 4.8rem auto 1fr 10rem;
 	align-items: center;
-	gap: 10px;
+	gap: 1rem;
 
 	.logo {
-		width: 48px;
-		height: 48px;
-		border-radius: 5px;
+		width: 4.8rem;
+		height: 4.8rem;
+		border-radius: 0.5rem;
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
 	}
 
 	h1 {
-		font-size: 24px;
+		font-size: 2.4rem;
 	}
 
 	.controls {
+		font-size: 1.6rem;
+
 		div {
 			cursor: pointer;
 			display: flex;
 			align-items: center;
 
 			i {
-				width: 16px;
+				width: 1.6rem;
 			}
 
 			span {
-				margin-left: 5px;
+				margin-left: 0.5rem;
 			}
 		}
 	}
@@ -152,29 +155,30 @@ const IS_EXTERNAL = (path) => {
 	margin: 0;
 	display: flex;
 	list-style: none;
+	font-size: 1.6rem;
 
 	> li {
 		position: relative;
-		margin: 0 20px;
+		margin: 0 1.25em;
 
 		&:has(> ul)::after {
 			content: "▼";
-			font-size: 10px;
+			font-size: 1rem;
 			position: absolute;
-			right: -10px;
+			right: -1rem;
 			top: 50%;
 			transform: translateY(-50%);
 			transition: transform 0.3s ease;
 		}
 
-		> a{
-			padding: 12px 16px;
+		> a {
+			padding: 1.2rem 1.6rem;
 			display: block;
 			font-weight: bold;
 			text-decoration: none;
 			transition: color 0.3s ease;
 
-			&:hover{
+			&:hover {
 				color: var(--primary-color);
 			}
 		}
@@ -196,28 +200,28 @@ const IS_EXTERNAL = (path) => {
 		position: absolute;
 		top: 100%;
 		left: 0;
-		padding: 8px 0;
+		padding: 1rem 0;
 		margin: 0;
-		min-width: 140px;
+		min-width: 14rem;
 		background-color: var(--background-color);
 		list-style: none;
 		opacity: 0;
-		transform: translateY(10px);
+		transform: translateY(1rem);
 		pointer-events: none;
 		transition: all 0.3s ease;
 		box-shadow: 0 4px 12px var(--box-shadow-color);
-		border-radius: 6px;
+		border-radius: 0.6rem;
 
 		li {
 			margin: 0;
 
-			> a{
-				padding: 10px 16px;
+			> a {
+				padding: 1rem 1.6rem;
 				display: block;
 				text-decoration: none;
 				transition: background 0.3s ease;
 
-				&:hover{
+				&:hover {
 					background-color: var(--button-hover-background-color);
 					color: var(--primary-color);
 				}
@@ -226,8 +230,8 @@ const IS_EXTERNAL = (path) => {
 	}
 
 	.external-icon {
-		margin-left: 4px;
-		font-size: 0.7em;
+		margin-left: 0.4rem;
+		font-size: 0.7rem;
 	}
 }
 </style>

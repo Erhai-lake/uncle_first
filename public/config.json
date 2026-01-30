@@ -47,17 +47,22 @@
 			"title": "carouselChart.default.title",
 			"image": "https://placehold.co/1920x1080/667eea/ffffff",
 			"description": [
-				"这是一张图片1",
-				"这是一张图片2",
-				"这是一张图片3",
-				"这是一张图片4",
-				"这是一张图片5"
+				"这是默认",
+				"这是一张图片2"
 			]
 		},
 		"images": [
 			{
-				"title": "",
+				"title": "图片1",
 				"image": "",
+				"description": [
+					"这是图片1的描述1",
+					"这是图片1的描述2"
+				]
+			},
+			{
+				"title": "图片2",
+				"image": "https://placehold.co/1920x1080/80ceff/ffffff",
 				"description": []
 			}
 		]
