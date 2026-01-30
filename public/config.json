@@ -88,5 +88,23 @@
 				"image": "https://placehold.co/70"
 			}
 		]
-	}
+	},
+	"data": [
+		{
+			"number": "12,500+",
+			"description": "data.description1"
+		},
+		{
+			"number": "200B+",
+			"description": "data.description2"
+		},
+		{
+			"number": "98%",
+			"description": "data.description3"
+		},
+		{
+			"number": "150+",
+			"description": "data.description4"
+		}
+	]
 }

@@ -14,5 +14,9 @@
 	"process.card3.title": "Docking Negotiation",
 	"process.card3.description": "Arrange factory visits and business negotiations, assist in contract signing",
 	"process.card4.title": "Production Delivery",
-	"process.card4.description": "Monitor production process, ensure quality control, and arrange logistics"
+	"process.card4.description": "Monitor production process, ensure quality control, and arrange logistics",
+	"data.description1": "Collaborate with high-quality factories",
+	"data.description2": "Total trade volume",
+	"data.description3": "Customer satisfaction",
+	"data.description4": "Industry coverage"
 }

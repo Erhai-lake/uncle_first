@@ -3,20 +3,27 @@ import {useI18n} from "vue-i18n"
 import config from "@/../public/config.json"
 
 /**
+ * 配置
+ */
+const process = config?.process || {}
+
+/**
  * 语言
  */
 const {t} = useI18n()
 </script>
 
 <template>
-	<div class="process-container">
-		<h2>{{t(config?.process?.title || "title")}}</h2>
-		<p>{{t(config?.process?.description || "description")}}</p>
-		<div class="card-container">
-			<div class="card" v-for="(item, index) in config?.process?.cards || []" :key="index">
-				<div :style="{backgroundImage: `url(${item.image || ''})`}"></div>
-				<h3>{{t(item.title || 'title')}}</h3>
-				<p>{{t(item.description || 'description')}}</p>
+	<div
+		class="process-container"
+		v-if="process?.title || process?.description || process?.cards?.length > 0">
+		<h2 v-if="process?.title">{{ t(process?.title) }}</h2>
+		<p v-if="process?.description">{{ t(process?.description) }}</p>
+		<div class="card-container" v-if="process?.cards?.length > 0">
+			<div class="card" v-for="(item, index) in process?.cards || []" :key="index">
+				<div v-if="item.image" :style="{backgroundImage: `url(${item.image})`}"></div>
+				<h3 v-if="item.title">{{ t(item.title) }}</h3>
+				<p v-if="item.description">{{ t(item.description) }}</p>
 			</div>
 		</div>
 	</div>
@@ -43,15 +50,16 @@ const {t} = useI18n()
 	}
 }
 
-.card-container{
+.card-container {
 	padding: 2rem 0;
+	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 5rem;
 
-	.card{
+	.card {
 		padding: 3.2rem;
 		width: 25rem;
 		box-shadow: 0 3px 8px var(--box-shadow-color);
@@ -61,7 +69,7 @@ const {t} = useI18n()
 		align-items: center;
 		gap: 2rem;
 
-		div{
+		div {
 			width: 7rem;
 			height: 7rem;
 			border-radius: 50%;
@@ -71,12 +79,12 @@ const {t} = useI18n()
 			background-repeat: no-repeat;
 		}
 
-		h3{
+		h3 {
 			font-size: 2rem;
 			font-weight: 600;
 		}
 
-		p{
+		p {
 			font-size: 2rem;
 			color: var(--text-color-secondary);
 		}

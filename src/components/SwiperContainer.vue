@@ -9,6 +9,11 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 /**
+ * 配置
+ */
+const carouselChart = config?.carouselChart || {}
+
+/**
  * 语言
  */
 const {t} = useI18n()
@@ -44,12 +49,20 @@ const onSlideChange = (swiper) => {
 </script>
 
 <template>
-	<div class="swiper-container" @mouseenter="showArrows = true" @mouseleave="showArrows = false">
+	<div
+		v-if="carouselChart?.images?.length > 0"
+		class="swiper-container"
+		@mouseenter="showArrows = true"
+		@mouseleave="showArrows = false">
 		<div class="left-content">
 			<div class="content-wrapper">
-				<h2>{{ t(config?.carouselChart?.images?.[slideIndex]?.title || config?.carouselChart?.default?.title || "title") }}</h2>
+				<h2>
+					{{
+						t(carouselChart?.images?.[slideIndex]?.title || carouselChart?.default?.title || "title")
+					}}
+				</h2>
 				<p
-					v-for="(description, index) in config?.carouselChart?.images?.[slideIndex]?.description || config?.carouselChart?.default?.description || []"
+					v-for="(description, index) in carouselChart?.images?.[slideIndex]?.description || carouselChart?.default?.description || []"
 					:key="index">
 					{{ t(description) }}
 				</p>
@@ -65,14 +78,14 @@ const onSlideChange = (swiper) => {
 				:navigation="{nextEl: '.custom-next', prevEl: '.custom-prev'}"
 				@swiper="onSwiper"
 				@slideChange="onSlideChange">
-				<SwiperSlide v-for="(slide, index) in config?.carouselChart?.images || []" :key="index">
+				<SwiperSlide v-for="(slide, index) in carouselChart?.images || []" :key="index">
 					<div
 						class="slide-bg"
-						:style="{backgroundImage: `url(${slide.image || config?.carouselChart?.default?.image || ''})`}"
-						:aria-label="t(slide.title || config?.carouselChart?.default?.title || 'title')"/>
+						:style="{backgroundImage: `url(${slide.image || carouselChart?.default?.image || ''})`}"
+						:aria-label="t(slide.title || carouselChart?.default?.title || 'title')"/>
 				</SwiperSlide>
 			</swiper>
-			<div class="custom-navigation" v-if="config?.carouselChart?.images?.length > 1">
+			<div class="custom-navigation" v-if="carouselChart?.images?.length > 1">
 				<button class="custom-prev" :class="{ 'visible': showArrows }">
 					<svg class="arrow-icon" viewBox="0 0 24 24">
 						<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -109,7 +122,7 @@ const onSlideChange = (swiper) => {
 	box-sizing: border-box;
 	width: 30rem;
 	color: var(--text-color);
-	background-image: var(--swiper-container-text-background-color);
+	background-image: linear-gradient(135deg, var(--primary-color), var(--swiper-container-text-background-color));
 	display: flex;
 	justify-content: center;
 	flex-shrink: 0;
