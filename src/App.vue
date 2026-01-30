@@ -7,10 +7,12 @@ import Database from "@/services/Database.js"
 
 onMounted(() => {
 	// 语言
-	const {locale} = useI18n()
+	const {locale, t} = useI18n()
 	locale.value = Database.get("language", "zh-CN")
 	// 主题
 	Theme.applyTheme(Theme.getTheme())
+	// 设置标题
+	document.title = t("title")
 })
 </script>
 

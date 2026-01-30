@@ -1,9 +1,9 @@
 <script setup>
-import config from "../../public/config.json"
 import {computed, ref} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import Database from "@/services/Database.js"
+import config from "../../public/config.json"
 
 /**
  * 主题
@@ -19,7 +19,8 @@ const {locale, t} = useI18n()
  * Logo 主题
  */
 const logoTheme = computed(() => {
-	return THEME.value === "light" ? config.logo.light : config.logo.dark
+	document.querySelector("link[rel='icon']").href = config.logo[THEME.value || "light"]
+	return config.logo[THEME.value || "light"]
 })
 
 /**
@@ -30,6 +31,7 @@ const switchLanguage = () => {
 	const NEW_LOCALE = CURRENT_LOCALE === "zh-CN" ? "en-US" : "zh-CN"
 	locale.value = JSON.parse(JSON.stringify(NEW_LOCALE))
 	Database.add("language", NEW_LOCALE)
+	document.title = t("title")
 }
 
 /**
@@ -72,7 +74,7 @@ const IS_EXTERNAL = (path) => {
 					:is="IS_EXTERNAL(item.path) ? 'a' : 'router-link'"
 					:href="IS_EXTERNAL(item.path) ? item.path : null"
 					:to="!IS_EXTERNAL(item.path) ? item.path : null"
-					v-bind="IS_EXTERNAL(item.path) ? { target: item.target || '_self', rel: 'noopener noreferrer' } : {}">
+					v-bind="IS_EXTERNAL(item.path) ? { target: '_' + item.target || 'self', rel: 'noopener noreferrer' } : {}">
 					{{ t(item.name) }}
 					<i v-if="IS_EXTERNAL(item.path)" class="fas fa-up-right-from-square external-icon"></i>
 				</component>

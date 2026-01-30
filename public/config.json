@@ -1,13 +1,13 @@
 {
 	"logo": {
-		"light": "https://placehold.co/48",
-		"dark": "https://placehold.co/48/4f5052/ffffff"
+		"light": "./images/logo-light.svg",
+		"dark": "./images/logo-dark.svg"
 	},
 	"menus": [
 		{
 			"name": "menus.home",
 			"path": "/",
-			"target": "_self"
+			"target": "self"
 		},
 		{
 			"name": "一级",
@@ -16,12 +16,12 @@
 				{
 					"name": "二级",
 					"path": "/",
-					"target": "_self"
+					"target": "self"
 				},
 				{
 					"name": "二级",
 					"path": "/",
-					"target": "_self"
+					"target": "self"
 				}
 			]
 		},
@@ -32,12 +32,12 @@
 				{
 					"name": "二级",
 					"path": "/",
-					"target": "_self"
+					"target": "self"
 				},
 				{
 					"name": "Bilibili",
 					"path": "https://bilibili.com",
-					"target": "_blank"
+					"target": "blank"
 				}
 			]
 		}
