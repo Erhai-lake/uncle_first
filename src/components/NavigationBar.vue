@@ -19,8 +19,8 @@ const {locale, t} = useI18n()
  * Logo 主题
  */
 const logoTheme = computed(() => {
-	document.querySelector("link[rel='icon']").href = config?.logo[THEME.value || "light"]
-	return config?.logo[THEME.value || "light"]
+	document.querySelector("link[rel='icon']").href = config?.logo?.[THEME.value || "light"] || ""
+	return config?.logo?.[THEME.value || "light"] || ""
 })
 
 /**
