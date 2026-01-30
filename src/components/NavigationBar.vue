@@ -1,12 +1,30 @@
 <script setup>
-import {ref} from "vue"
+import config from "../../public/config.json"
+import {computed, ref} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
-import EventBus from "@/services/EventBus.js"
 import Database from "@/services/Database.js"
 
-// 语言
+/**
+ * 主题
+ */
+const THEME = ref(Theme.getTheme() || "light")
+
+/**
+ * 语言
+ */
 const {locale, t} = useI18n()
+
+/**
+ * Logo 主题
+ */
+const logoTheme = computed(() => {
+	return THEME.value === "light" ? config.logo.light : config.logo.dark
+})
+
+/**
+ * 切换语言
+ */
 const switchLanguage = () => {
 	const CURRENT_LOCALE = JSON.parse(JSON.stringify(locale.value))
 	const NEW_LOCALE = CURRENT_LOCALE === "zh-CN" ? "en-US" : "zh-CN"
@@ -14,54 +32,27 @@ const switchLanguage = () => {
 	Database.add("language", NEW_LOCALE)
 }
 
-// 主题
-const THEME = ref(Theme.getTheme() || "light")
+/**
+ * 切换主题
+ */
 const switchTheme = () => {
 	THEME.value = THEME.value === "light" ? "dark" : "light"
 	Theme.applyTheme(THEME.value)
 }
 
-// 外部链接判断
+/**
+ * 外部链接判断
+ */
 const IS_EXTERNAL = (path) => {
 		return /^https?:\/\//.test(path)
-}
-
-// 导航栏
-const MENUS = [
-	{
-		name: "首页",
-		path: "/",
-		target: "_self"
-	},
-	{
-		name: "一级",
-		path: "/",
-		children: [
-			{name: "二级", path: "/", target: "_self"},
-			{name: "二级", path: "/", target: "_self"}
-		]
-	},
-	{
-		name: "一级",
-		path: "/",
-		children: [
-			{name: "二级", path: "/", target: "_self"},
-			{name: "Bilibili", path: "https://bilibili.com", target: "_blank"}
-		]
-	}
-]
-
-// 登录
-const login = () => {
-	EventBus.emit("isLogin", true)
 }
 </script>
 
 <template>
 	<div class="navigation-bar">
 		<div class="logo-container">
-			<div class="logo"></div>
-			<h1>标题</h1>
+			<div class="logo" :style="{ backgroundImage: `url(${logoTheme})` }"></div>
+			<h1>{{ t("title") }}</h1>
 			<div></div>
 			<div class="controls">
 				<div @click="switchLanguage">
@@ -76,13 +67,13 @@ const login = () => {
 		</div>
 		<div class="hr"></div>
 		<ul class="menu">
-			<li v-for="(item, i) in MENUS" :key="i">
+			<li v-for="(item, i) in config.menus" :key="i">
 				<component
 					:is="IS_EXTERNAL(item.path) ? 'a' : 'router-link'"
 					:href="IS_EXTERNAL(item.path) ? item.path : null"
 					:to="!IS_EXTERNAL(item.path) ? item.path : null"
 					v-bind="IS_EXTERNAL(item.path) ? { target: item.target || '_self', rel: 'noopener noreferrer' } : {}">
-					{{ item.name }}
+					{{ t(item.name) }}
 					<i v-if="IS_EXTERNAL(item.path)" class="fas fa-up-right-from-square external-icon"></i>
 				</component>
 				<ul v-if="item.children">
@@ -92,14 +83,11 @@ const login = () => {
 							:href="IS_EXTERNAL(child.path) ? child.path : null"
 							:to="!IS_EXTERNAL(child.path) ? child.path : null"
 							v-bind="IS_EXTERNAL(child.path) ? { target: child.target || '_self', rel: 'noopener noreferrer' } : {}">
-							{{ child.name }}
+							{{ t(child.name) }}
 							<i v-if="IS_EXTERNAL(child.path)" class="fas fa-up-right-from-square external-icon"></i>
 						</component>
 					</li>
 				</ul>
-			</li>
-			<li>
-				<a @click="login">登录</a>
 			</li>
 		</ul>
 	</div>
@@ -127,7 +115,6 @@ const login = () => {
 		width: 48px;
 		height: 48px;
 		border-radius: 5px;
-		background-image: url("https://placehold.co/48");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;

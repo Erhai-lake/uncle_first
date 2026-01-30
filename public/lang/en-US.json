@@ -1,0 +1,10 @@
+{
+	"title": "Unnamed Station",
+	"theme": {
+		"light": "Daylight",
+		"dark": "Night"
+	},
+	"menus": {
+		"home": "Home"
+	}
+}

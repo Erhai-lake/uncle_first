@@ -1,0 +1,45 @@
+{
+	"logo": {
+		"light": "https://placehold.co/48",
+		"dark": "https://placehold.co/48/4f5052/ffffff"
+	},
+	"menus": [
+		{
+			"name": "menus.home",
+			"path": "/",
+			"target": "_self"
+		},
+		{
+			"name": "一级",
+			"path": "/",
+			"children": [
+				{
+					"name": "二级",
+					"path": "/",
+					"target": "_self"
+				},
+				{
+					"name": "二级",
+					"path": "/",
+					"target": "_self"
+				}
+			]
+		},
+		{
+			"name": "一级",
+			"path": "/",
+			"children": [
+				{
+					"name": "二级",
+					"path": "/",
+					"target": "_self"
+				},
+				{
+					"name": "Bilibili",
+					"path": "https://bilibili.com",
+					"target": "_blank"
+				}
+			]
+		}
+	]
+}

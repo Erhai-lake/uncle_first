@@ -3,7 +3,6 @@ import {onMounted} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import NavigationBar from "@/components/NavigationBar.vue"
-import Login from "@/components/login.vue"
 import Database from "@/services/Database.js"
 
 onMounted(() => {
@@ -22,7 +21,6 @@ onMounted(() => {
 			<router-view/>
 		</div>
 	</div>
-	<login/>
 </template>
 
 <style scoped lang="less">
