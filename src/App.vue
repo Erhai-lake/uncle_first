@@ -2,8 +2,8 @@
 import {onMounted} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
-import NavigationBar from "@/components/NavigationBar.vue"
 import Database from "@/services/Database.js"
+import NavigationBar from "@/components/NavigationBar.vue"
 
 onMounted(() => {
 	// 语言
@@ -35,7 +35,6 @@ onMounted(() => {
 }
 
 .router {
-	padding: 0 50px;
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;

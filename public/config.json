@@ -41,5 +41,25 @@
 				}
 			]
 		}
-	]
+	],
+	"carouselChart": {
+		"default": {
+			"title": "carouselChart.default.title",
+			"image": "https://placehold.co/1920x1080/667eea/ffffff",
+			"description": [
+				"这是一张图片1",
+				"这是一张图片2",
+				"这是一张图片3",
+				"这是一张图片4",
+				"这是一张图片5"
+			]
+		},
+		"images": [
+			{
+				"title": "",
+				"image": "",
+				"description": []
+			}
+		]
+	}
 }

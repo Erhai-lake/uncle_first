@@ -3,7 +3,7 @@ import {computed, ref} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import Database from "@/services/Database.js"
-import config from "../../public/config.json"
+import config from "@/../public/config.json"
 
 /**
  * 主题

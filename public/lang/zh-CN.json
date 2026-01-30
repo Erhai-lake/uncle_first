@@ -1,10 +1,7 @@
 {
 	"title": "无名站",
-	"theme": {
-		"light": "白昼",
-		"dark": "黑夜"
-	},
-	"menus": {
-		"home": "首页"
-	}
+	"theme.light": "白昼",
+	"theme.dark": "黑夜",
+	"menus.home": "首页",
+	"carouselChart.default.title": "默认图片标题"
 }
