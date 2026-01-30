@@ -3,5 +3,16 @@
 	"theme.light": "白昼",
 	"theme.dark": "黑夜",
 	"menus.home": "首页",
-	"carouselChart.default.title": "默认图片标题"
+	"carouselChart.default.title": "默认图片标题",
+	"carouselChart.default.description": "这是默认图片的描述",
+	"process.title": "高效精准的服务流程",
+	"process.description": "从需求匹配到订单交付, 全程专业对接",
+	"process.card1.title": "需求沟通",
+	"process.card1.description": "与客户深入沟通, 理解需求, 确保客户满意度",
+	"process.card2.title": "工厂筛选",
+	"process.card2.description": "基于严格标准匹配3-5家优质生产企业",
+	"process.card3.title": "对接洽谈",
+	"process.card3.description": "安排工厂参观与商务洽谈, 协助合同签订",
+	"process.card4.title": "生产交付",
+	"process.card4.description": "生产过程监控, 质检保障, 物流安排"
 }

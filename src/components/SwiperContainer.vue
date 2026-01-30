@@ -47,9 +47,9 @@ const onSlideChange = (swiper) => {
 	<div class="swiper-container" @mouseenter="showArrows = true" @mouseleave="showArrows = false">
 		<div class="left-content">
 			<div class="content-wrapper">
-				<h2>{{ t(config.carouselChart.images[slideIndex]?.title || config.carouselChart.default.title) }}</h2>
+				<h2>{{ t(config?.carouselChart?.images?.[slideIndex]?.title || config?.carouselChart?.default?.title || "title") }}</h2>
 				<p
-					v-for="(description, index) in config.carouselChart.images[slideIndex]?.description || config.carouselChart.default.description"
+					v-for="(description, index) in config?.carouselChart?.images?.[slideIndex]?.description || config?.carouselChart?.default?.description || []"
 					:key="index">
 					{{ t(description) }}
 				</p>
@@ -65,11 +65,11 @@ const onSlideChange = (swiper) => {
 				:navigation="{nextEl: '.custom-next', prevEl: '.custom-prev'}"
 				@swiper="onSwiper"
 				@slideChange="onSlideChange">
-				<SwiperSlide v-for="(slide, index) in config.carouselChart.images" :key="index">
+				<SwiperSlide v-for="(slide, index) in config?.carouselChart?.images || []" :key="index">
 					<div
 						class="slide-bg"
-						:style="{backgroundImage: `url(${slide.image || config.carouselChart.default.image})`}"
-						:aria-label="t(slide.title || config.carouselChart.default.title)"/>
+						:style="{backgroundImage: `url(${slide.image || config?.carouselChart?.default?.image || ''})`}"
+						:aria-label="t(slide.title || config?.carouselChart?.default?.title || 'title')"/>
 				</SwiperSlide>
 			</swiper>
 			<div class="custom-navigation">

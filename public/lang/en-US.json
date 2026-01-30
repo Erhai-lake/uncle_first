@@ -3,5 +3,16 @@
 	"theme.light": "Daylight",
 	"theme.dark": "Night",
 	"menus.home": "Home",
-	"carouselChart.default.title": "Default Image Title"
+	"carouselChart.default.title": "Default Image Title",
+	"carouselChart.default.description": "Default image description",
+	"process.title": "Efficient Precise Service Process",
+	"process.description": "From demand matching to order delivery, all steps are professionally handled",
+	"process.card1.title": "Demand Communication",
+	"process.card1.description": "Deep communication with customers to understand needs and ensure customer satisfaction",
+	"process.card2.title": "Factory Screening",
+	"process.card2.description": "Strictly match 3-5 high-quality production enterprises based on strict standards",
+	"process.card3.title": "Docking Negotiation",
+	"process.card3.description": "Arrange factory visits and business negotiations, assist in contract signing",
+	"process.card4.title": "Production Delivery",
+	"process.card4.description": "Monitor production process, ensure quality control, and arrange logistics"
 }

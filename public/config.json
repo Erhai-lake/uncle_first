@@ -1,4 +1,5 @@
 {
+	"title": "title",
 	"logo": {
 		"light": "./images/logo-light.svg",
 		"dark": "./images/logo-dark.svg"
@@ -47,23 +48,44 @@
 			"title": "carouselChart.default.title",
 			"image": "https://placehold.co/1920x1080/667eea/ffffff",
 			"description": [
-				"这是默认",
-				"这是一张图片2"
+				"carouselChart.default.description"
 			]
 		},
 		"images": [
 			{
 				"title": "图片1",
-				"image": "",
+				"image": "https://placehold.co/1920x1080/80ceff/ffffff",
 				"description": [
-					"这是图片1的描述1",
-					"这是图片1的描述2"
+					"图片1描述",
+					"没有使用翻译键",
+					"图片最好是1920x1080或他的倍数"
 				]
+			}
+		]
+	},
+	"process": {
+		"title": "process.title",
+		"description": "process.description",
+		"cards": [
+			{
+				"title": "process.card1.title",
+				"description": "process.card1.description",
+				"image": "https://placehold.co/70"
 			},
 			{
-				"title": "图片2",
-				"image": "https://placehold.co/1920x1080/80ceff/ffffff",
-				"description": []
+				"title": "process.card2.title",
+				"description": "process.card2.description",
+				"image": "https://placehold.co/70"
+			},
+			{
+				"title": "process.card3.title",
+				"description": "process.card3.description",
+				"image": "https://placehold.co/70"
+			},
+			{
+				"title": "process.card4.title",
+				"description": "process.card4.description",
+				"image": "https://placehold.co/70"
 			}
 		]
 	}

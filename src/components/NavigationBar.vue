@@ -19,8 +19,8 @@ const {locale, t} = useI18n()
  * Logo 主题
  */
 const logoTheme = computed(() => {
-	document.querySelector("link[rel='icon']").href = config.logo[THEME.value || "light"]
-	return config.logo[THEME.value || "light"]
+	document.querySelector("link[rel='icon']").href = config?.logo[THEME.value || "light"]
+	return config?.logo[THEME.value || "light"]
 })
 
 /**
@@ -31,7 +31,7 @@ const switchLanguage = () => {
 	const NEW_LOCALE = CURRENT_LOCALE === "zh-CN" ? "en-US" : "zh-CN"
 	locale.value = JSON.parse(JSON.stringify(NEW_LOCALE))
 	Database.add("language", NEW_LOCALE)
-	document.title = t("title")
+	document.title = t(config?.title || "title")
 }
 
 /**
@@ -54,7 +54,7 @@ const IS_EXTERNAL = (path) => {
 	<div class="navigation-bar">
 		<div class="logo-container">
 			<div class="logo" :style="{ backgroundImage: `url(${logoTheme})` }"></div>
-			<h1>{{ t("title") }}</h1>
+			<h1>{{ t(config?.title || "title") }}</h1>
 			<div></div>
 			<div class="controls">
 				<div @click="switchLanguage">
@@ -69,7 +69,7 @@ const IS_EXTERNAL = (path) => {
 		</div>
 		<div class="hr"></div>
 		<ul class="menu">
-			<li v-for="(item, i) in config.menus" :key="i">
+			<li v-for="(item, i) in config?.menus || []" :key="i">
 				<component
 					:is="IS_EXTERNAL(item.path) ? 'a' : 'router-link'"
 					:href="IS_EXTERNAL(item.path) ? item.path : null"
@@ -103,6 +103,7 @@ const IS_EXTERNAL = (path) => {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	border-bottom: 1px solid var(--border-color);
 	z-index: 2;
 }
 
