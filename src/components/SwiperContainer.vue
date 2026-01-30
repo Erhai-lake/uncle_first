@@ -72,7 +72,7 @@ const onSlideChange = (swiper) => {
 						:aria-label="t(slide.title || config?.carouselChart?.default?.title || 'title')"/>
 				</SwiperSlide>
 			</swiper>
-			<div class="custom-navigation">
+			<div class="custom-navigation" v-if="config?.carouselChart?.images?.length > 1">
 				<button class="custom-prev" :class="{ 'visible': showArrows }">
 					<svg class="arrow-icon" viewBox="0 0 24 24">
 						<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
