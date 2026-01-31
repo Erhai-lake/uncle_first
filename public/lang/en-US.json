@@ -1,5 +1,6 @@
 {
 	"title": "Unnamed Station",
+	"description": "Providing professional foreign factory docking services, committed to connecting global buyers with high-quality Chinese manufacturers, building a reliable and efficient global supply chain ecosystem.",
 	"theme.light": "Daylight",
 	"theme.dark": "Night",
 	"menus.home": "Home",
@@ -18,5 +19,13 @@
 	"data.description1": "Collaborate with high-quality factories",
 	"data.description2": "Total trade volume",
 	"data.description3": "Customer satisfaction",
-	"data.description4": "Industry coverage"
+	"data.description4": "Industry coverage",
+	"service.title": "Our Core Services",
+	"service.description": "Comprehensive support for your supply chain stability and efficiency",
+	"service.card1.title": "Factory Screening and Qualification Audit",
+	"service.card1.description": "Professional team to visit and evaluate factories, screen high-quality factories based on production capabilities, quality controls, and social responsibility, ensuring supplier qualifications are reliable.",
+	"service.card2.title": "Production Process Monitoring",
+	"service.card2.description": "On-site quality control team to monitor key production nodes, ensure products meet quality standards and delivery timelines, reducing unqualified inspection risks.",
+	"service.card3.title": "Trade Process Management",
+	"service.card3.description": "Full-service support from order confirmation to export customs clearance, provide professional document handling, payment settlement support, and optimize foreign trade efficiency."
 }

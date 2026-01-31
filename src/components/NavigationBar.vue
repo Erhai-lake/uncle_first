@@ -1,5 +1,5 @@
 <script setup>
-import {computed, ref} from "vue"
+import {computed, watch} from "vue"
 import {useI18n} from "vue-i18n"
 import Theme from "@/services/Theme.js"
 import Database from "@/services/Database.js"
@@ -8,7 +8,7 @@ import config from "@/../public/config.json"
 /**
  * 主题
  */
-const THEME = ref(Theme.getTheme() || "light")
+const THEME = Theme.getTheme()
 
 /**
  * 语言
@@ -19,9 +19,16 @@ const {locale, t} = useI18n()
  * Logo 主题
  */
 const logoTheme = computed(() => {
-	document.querySelector("link[rel='icon']").href = config?.logo?.[THEME.value || "light"] || ""
-	return config?.logo?.[THEME.value || "light"] || ""
+	return config?.logo?.[THEME.value] || ""
 })
+
+/**
+ * 设置 Favicon
+ */
+watch(logoTheme, (url) => {
+	const FAVICON = document.querySelector("link[rel='icon']")
+	if (FAVICON && url) FAVICON.href = url
+}, {immediate: true})
 
 /**
  * 切换语言
@@ -32,14 +39,15 @@ const switchLanguage = () => {
 	locale.value = JSON.parse(JSON.stringify(NEW_LOCALE))
 	Database.add("language", NEW_LOCALE)
 	document.title = t(config?.title || "title")
+	document.querySelector("meta[name='description']").setAttribute("content", t(config?.description || "description"))
 }
 
 /**
  * 切换主题
  */
 const switchTheme = () => {
-	THEME.value = THEME.value === "light" ? "dark" : "light"
-	Theme.applyTheme(THEME.value)
+	const NEW_THEME = THEME.value === "light" ? "dark" : "light"
+	Theme.applyTheme(NEW_THEME)
 }
 
 /**

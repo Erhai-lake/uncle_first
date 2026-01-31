@@ -5,12 +5,17 @@ import Theme from "@/services/Theme.js"
 import Database from "@/services/Database.js"
 import NavigationBar from "@/components/NavigationBar.vue"
 
+/**
+ * 主题
+ */
+const THEME = Theme.getTheme()
+
 onMounted(() => {
 	// 语言
 	const {locale, t} = useI18n()
 	locale.value = Database.get("language", "zh-CN")
 	// 主题
-	Theme.applyTheme(Theme.getTheme())
+	Theme.applyTheme(THEME.value)
 	// 设置标题
 	document.title = t("title")
 })

@@ -1,20 +1,23 @@
+import {ref} from "vue"
 import database from "@/services/Database.js"
+
+const theme = ref(database.get("theme", "light"))
 
 export default {
 	/**
 	 * 应用主题
-	 * @param theme 主题名称
+	 * @param newTheme  主题名称
 	 */
-	applyTheme(theme = "light") {
-		document.documentElement.setAttribute("data-theme", theme)
-		database.add("theme", theme)
-		this.getTheme()
+	applyTheme(newTheme = "light") {
+		theme.value = newTheme
+		document.documentElement.setAttribute("data-theme", newTheme)
+		database.add("theme", newTheme)
 	},
 	/**
 	 * 获取当前主题
 	 * @returns {string} 主题名称
 	 */
 	getTheme() {
-		return database.get("theme", "light")
+		return theme
 	}
 }

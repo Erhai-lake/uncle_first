@@ -16,8 +16,8 @@ const {t} = useI18n()
 <template>
 	<div class="data-container" v-if="data?.length > 0">
 		<div v-for="(item, index) in data || []" :key="index">
-			<h2>{{item.number || "0"}}</h2>
-			<p>{{t(item.description || "description")}}</p>
+			<h2 v-if="item.number">{{item.number}}</h2>
+			<p v-if="item.description">{{t(item.description)}}</p>
 		</div>
 	</div>
 </template>

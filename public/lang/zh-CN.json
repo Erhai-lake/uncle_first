@@ -1,5 +1,6 @@
 {
 	"title": "无名站",
+	"description": "提供专业的外贸工厂对接服务, 致力于连接全球采购商与中国优质制造商, 打造高效/可信赖的全球供应链生态系统.",
 	"theme.light": "白昼",
 	"theme.dark": "黑夜",
 	"menus.home": "首页",
@@ -18,5 +19,13 @@
 	"data.description1": "合作优质工厂",
 	"data.description2": "累计贸易金额",
 	"data.description3": "客户满意度",
-	"data.description4": "覆盖行业领域"
+	"data.description4": "覆盖行业领域",
+	"service.title": "我们的核心服务",
+	"service.description": "全方位保障您的供应链稳定性与效率",
+	"service.card1.title": "工厂筛选与资质审核",
+	"service.card1.description": "专业团队实地考察评估, 通过生产能力/质量控制/社会责任等维度筛选优质工厂, 确保供应商资质可靠.",
+	"service.card2.title": "生产流程监控",
+	"service.card2.description": "驻厂质检团队全程监控生产关键节点, 确保产品符合质量标准与交付时间, 减少验货不合格风险.",
+	"service.card3.title": "贸易流程管理",
+	"service.card3.description": "从订单确认到出口报关的全程服务, 提供专业单据处理、货款结算支持, 优化外贸环节效率."
 }

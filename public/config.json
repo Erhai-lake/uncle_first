@@ -1,5 +1,29 @@
 {
 	"title": "title",
+	"description": "description",
+	"info": [
+		{
+			"label": "地址",
+			"value": "XX XX XX XX XX"
+		},
+		{
+			"label": "电话",
+			"value": "+86 1145141919810"
+		},
+		{
+			"label": "邮箱",
+			"value": "test@gmail.com"
+		},
+		{
+			"label": "工作时间",
+			"value": "周一至周五 9:00 - 18:00"
+		}
+	],
+	"copyright": {
+		"year": "2026",
+		"rights": "保留所有权利",
+		"filing": "沪ICP备12345678号"
+	},
 	"logo": {
 		"light": "./images/logo-light.svg",
 		"dark": "./images/logo-dark.svg"
@@ -106,5 +130,26 @@
 			"number": "150+",
 			"description": "data.description4"
 		}
-	]
+	],
+	"service": {
+		"title": "service.title",
+		"description": "service.description",
+		"cards": [
+			{
+				"title": "service.card1.title",
+				"description": "service.card1.description",
+				"image": "https://placehold.co/450"
+			},
+			{
+				"title": "service.card2.title",
+				"description": "service.card2.description",
+				"image": "https://placehold.co/450"
+			},
+			{
+				"title": "service.card3.title",
+				"description": "service.card3.description",
+				"image": "https://placehold.co/450"
+			}
+		]
+	}
 }
